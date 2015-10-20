@@ -1,10 +1,10 @@
-package yunbei.app.demo.dao.mappers;
+package rfw.app.demo.dao.mappers;
 
 import java.util.List;
 import java.util.Map;
 
-import yunbei.app.demo.models.User;
-import yunbei.common.base.dao.mapper.IMapper;
+import rfw.app.demo.models.User;
+import rfw.common.base.dao.mapper.IMapper;
 
 /**
  * 

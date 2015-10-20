@@ -8,4 +8,4 @@
  * @version V1.0
  */
 
-package yunbei.app.demo.dao.interfaces;
+package rfw.app.demo.dao.interfaces;

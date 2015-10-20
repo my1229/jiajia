@@ -1,4 +1,4 @@
-package yunbei.test;
+package rfw.test;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -13,7 +13,7 @@ import org.apache.solr.client.solrj.response.UpdateResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrInputDocument;
 
-import yunbei.test.SolrTest.TradeInfo.Item;
+import rfw.test.SolrTest.TradeInfo.Item;
 
 public class SolrTest {
     public static void main3(String[] args) {

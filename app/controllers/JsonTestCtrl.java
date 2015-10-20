@@ -3,8 +3,8 @@ package controllers;
 import java.util.Date;
 
 import play.mvc.Controller;
-import yunbei.app.demo.models.User;
-import yunbei.common.utils.JsonUtil;
+import rfw.app.demo.models.User;
+import rfw.common.utils.JsonUtil;
 
 public class JsonTestCtrl extends Controller {
 

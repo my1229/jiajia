@@ -1,9 +1,9 @@
-package yunbei.app.demo.logic.impl;
+package rfw.app.demo.logic.impl;
 
-import yunbei.app.demo.dao.impl.UserDaoImpl;
-import yunbei.app.demo.dao.interfaces.IUserDao;
-import yunbei.app.demo.logic.IUserLogic;
-import yunbei.app.demo.models.User;
+import rfw.app.demo.dao.impl.UserDaoImpl;
+import rfw.app.demo.dao.interfaces.IUserDao;
+import rfw.app.demo.logic.IUserLogic;
+import rfw.app.demo.models.User;
 
 /**
  * 

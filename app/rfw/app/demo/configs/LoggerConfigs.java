@@ -1,4 +1,4 @@
-package yunbei.app.demo.configs;
+package rfw.app.demo.configs;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

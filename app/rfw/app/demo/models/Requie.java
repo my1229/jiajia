@@ -1,7 +1,7 @@
 /**
  * 
  */
-package yunbei.app.demo.models;
+package rfw.app.demo.models;
 
 /**
  * @author lizhong.chen

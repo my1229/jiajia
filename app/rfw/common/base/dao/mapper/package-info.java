@@ -8,4 +8,4 @@
  * @version V1.0
  */
 
-package yunbei.common.base.dao.mapper;
+package rfw.common.base.dao.mapper;

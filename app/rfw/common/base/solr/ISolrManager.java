@@ -1,7 +1,7 @@
 /**
  * 
  */
-package yunbei.common.base.solr;
+package rfw.common.base.solr;
 
 import java.io.IOException;
 import java.util.List;

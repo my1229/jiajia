@@ -1,12 +1,12 @@
 /**
  * 
  */
-package yunbei.common.base.job;
+package rfw.common.base.job;
 
 import org.slf4j.Logger;
 
 import play.jobs.Job;
-import yunbei.common.base.models.IndexModel;
+import rfw.common.base.models.IndexModel;
 
 /**
  * 

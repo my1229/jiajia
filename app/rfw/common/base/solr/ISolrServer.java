@@ -1,7 +1,7 @@
 /**
  * 
  */
-package yunbei.common.base.solr;
+package rfw.common.base.solr;
 
 import java.util.List;
 

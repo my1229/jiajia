@@ -1,4 +1,4 @@
-package yunbei.common.base.models;
+package rfw.common.base.models;
 
 import java.io.Serializable;
 

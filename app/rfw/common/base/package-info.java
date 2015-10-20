@@ -8,4 +8,4 @@
  * @version V1.0
  */
 
-package yunbei.common.base;
+package rfw.common.base;

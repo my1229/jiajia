@@ -1,6 +1,6 @@
-package yunbei.app.demo.logic;
+package rfw.app.demo.logic;
 
-import yunbei.app.demo.models.User;
+import rfw.app.demo.models.User;
 
 /**
  * 

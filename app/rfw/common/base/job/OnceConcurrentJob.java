@@ -1,7 +1,7 @@
 /**
  * 
  */
-package yunbei.common.base.job;
+package rfw.common.base.job;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,7 +13,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 
 import play.jobs.Job;
-import yunbei.common.base.pool.PYFutureTaskPool;
+import rfw.common.base.pool.PYFutureTaskPool;
 
 /**
  * 

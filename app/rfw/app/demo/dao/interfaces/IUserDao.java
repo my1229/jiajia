@@ -1,6 +1,6 @@
-package yunbei.app.demo.dao.interfaces;
+package rfw.app.demo.dao.interfaces;
 
-import yunbei.app.demo.models.User;
+import rfw.app.demo.models.User;
 
 /**
  * 

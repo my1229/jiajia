@@ -1,4 +1,4 @@
-package yunbei.common.base.job;
+package rfw.common.base.job;
 
 import java.util.HashMap;
 import java.util.List;

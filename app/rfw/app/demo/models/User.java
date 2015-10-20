@@ -1,11 +1,11 @@
-package yunbei.app.demo.models;
+package rfw.app.demo.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import org.hibernate.annotations.Index;
 
-import yunbei.common.base.models.BasicModel;
+import rfw.common.base.models.BasicModel;
 
 /**
  * 

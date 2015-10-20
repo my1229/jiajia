@@ -1,4 +1,4 @@
-package yunbei.common.base.dao.mapper;
+package rfw.common.base.dao.mapper;
 
 import java.util.List;
 import java.util.Map;
