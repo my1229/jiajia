@@ -2,9 +2,9 @@ package controllers;
 
 import java.util.Date;
 
+import jiajia.app.demo.models.User;
+import jiajia.common.utils.JsonUtil;
 import play.mvc.Controller;
-import rfw.app.demo.models.User;
-import rfw.common.utils.JsonUtil;
 
 public class JsonTestCtrl extends Controller {
 
