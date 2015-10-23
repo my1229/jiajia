@@ -2,10 +2,12 @@ package jiajia.app.demo.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import org.hibernate.annotations.Index;
 
-import jiajia.common.base.models.BasicModel;
+import jiajia.common.base.models.BasicGenericModel;
 
 /**
  * 
@@ -15,59 +17,85 @@ import jiajia.common.base.models.BasicModel;
  * @version V1.0
  */
 @Entity(name = User.TABLE_NAME)
-public class User extends BasicModel {
+public class User extends BasicGenericModel {
 
-    public static final String TABLE_NAME = "user";
+	public static final String TABLE_NAME = "user";
 
-    /**
-     * 用户名
-     */
-    @Column(name = "name", columnDefinition = " varchar(64) not null", unique = true)
-    @Index(name = "idx_use_name")
-    private String name;
+	@Id
+	@GeneratedValue
+	private Long uid;
 
-    /**
-     * 密码(md5加密)
-     */
-    @Column(name = "pwd", columnDefinition = " varchar(32)")
-    private String pwd;
+	/**
+	 * 用户名
+	 */
+	@Column(name = "user_name", columnDefinition = " varchar(64) not null", unique = true)
+	@Index(name = "idx_user_name")
+	private String userName;
 
-    /**
-     * 描述
-     */
-    @Column(name = "descr", columnDefinition = " varchar(2048)")
-    private String descr;
+	/**
+	 * 密码(md5加密)
+	 */
+	@Column(name = "pwd", columnDefinition = " varchar(32)")
+	private String pwd;
 
-    public User() {
-    }
+	private String email;
 
-    public User(String name, String pwd) {
-        this.name = name;
-        this.pwd = pwd;
-    }
+	private Boolean isVerification;
 
-    public String getName() {
-        return name;
-    }
+	public User() {
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public User(String userName, String pwd, String email, Boolean isVerification) {
+		this.userName = userName;
+		this.pwd = pwd;
+		this.email = email;
+		this.isVerification = isVerification;
+	}
 
-    public String getPwd() {
-        return pwd;
-    }
+	public Long getUid() {
+		return uid;
+	}
 
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
+	public void setUid(Long uid) {
+		this.uid = uid;
+	}
 
-    public String getDescr() {
-        return descr;
-    }
+	public String getUserName() {
+		return userName;
+	}
 
-    public void setDescr(String descr) {
-        this.descr = descr;
-    }
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Boolean getIsVerification() {
+		return isVerification;
+	}
+
+	public void setIsVerification(Boolean isVerification) {
+		this.isVerification = isVerification;
+	}
+
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", userName=" + userName + ", pwd=" + pwd + ", email=" + email + ", isVerification="
+				+ isVerification + "]";
+	}
 
 }

@@ -8,22 +8,21 @@ import play.mvc.Controller;
 
 public class JsonTestCtrl extends Controller {
 
-    public static void josnTest() {
-        User user = new User();
-        user.setAddTs(new Date());
-        user.setUpdateTs(new Date());
-        user.setDescr("描述");
-        user.setName("小明");
-        user.setPwd("aaa");
+	public static void josnTest() {
+		User user = new User();
+		user.setAddTs(new Date());
+		user.setUpdateTs(new Date());
+		user.setUserName("小明");
+		user.setPwd("aaa");
 
-        String userjson = JsonUtil.getJson(user);
+		String userjson = JsonUtil.getJson(user);
 
-        System.out.println(userjson);
+		System.out.println(userjson);
 
-        User user1 = JsonUtil.toObject(userjson, User.class);
+		User user1 = JsonUtil.toObject(userjson, User.class);
 
-        System.out.println(user1.getName());
+		System.out.println(user1.getUserName());
 
-        renderJSON(JsonUtil.getJson(user1));
-    }
+		renderJSON(JsonUtil.getJson(user1));
+	}
 }

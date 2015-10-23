@@ -1,13 +1,11 @@
 package controllers;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.apache.commons.lang.StringUtils;
 
 import jiajia.app.demo.logic.IUserLogic;
 import jiajia.app.demo.logic.impl.UserLogic;
-import jiajia.app.demo.models.Requie;
-import jiajia.app.demo.models.Requies;
 import jiajia.app.demo.models.User;
+import jiajia.common.utils.MD5Util;
 import play.mvc.Controller;
 
 /**
@@ -19,50 +17,69 @@ import play.mvc.Controller;
  */
 public class UserCtrl extends Controller {
 
-    private static IUserLogic userLogic = UserLogic.getInstance();
+	private static IUserLogic userLogic = UserLogic.getInstance();
 
-    /**
-     * 注册
-     * 
-     * @param name
-     * @param pwd
-     */
-    public static void register(String name, String pwd) {
-        User user = userLogic.selectUser(name);
-        if (user != null) {
-            renderJSON("注册失败，用户名已存在！");
-        }
+	/**
+	 * 注册
+	 * 
+	 * @param name
+	 * @param pwd
+	 */
+	public static void register(String userName, String pwd, String email) {
 
-        user = new User(name, pwd);
-        long ret = userLogic.addUser(user);
-        if (ret > 0) {
-            renderJSON("注册成功，用户名:" + name);
-        }
-        renderJSON("注册失败！");
-    }
+		if (StringUtils.isBlank(userName)) {
+			renderJSON("请输入用户名...");
+		}
+		if (StringUtils.isBlank(pwd)) {
+			renderJSON("请输入密码...");
+		}
+		if (StringUtils.isBlank(email)) {
+			renderJSON("请输入邮箱...");
+		}
 
-    /**
-     * 登陆
-     * 
-     * @param name
-     * @param pwd
-     */
-    public static void login(String name, String pwd) {
-        User user = userLogic.selectUser(name, pwd);
-        if (user != null) {
-            renderJSON("登陆成功");
-        }
+		User user = userLogic.selectUser(userName);
+		if (user != null) {
+			renderJSON("注册失败，用户名已存在！");
+		}
 
-        renderJSON("登陆失败，用户名或密码错误！");
-    }
+		boolean isVerification = false;
 
-    public static void testJson() {
-        List<Requie> rlist = new ArrayList<Requie>();
-        rlist.add(new Requie("年龄", "大于20岁"));
-        rlist.add(new Requie("性别", "男"));
-        Requies r = new Requies();
+		pwd = MD5Util.MD5(pwd);
 
-        r.setRequies(rlist);
-        renderJSON(r);
-    }
+		user = new User(userName, pwd, email, isVerification);
+		long ret = userLogic.addUser(user);
+		if (ret > 0) {
+			// TODO MailUtil.sendMail(email, mailTitle, mailConcept);
+			renderJSON("请登录您的邮箱：" + email + "进行最后的验证...");
+		}
+		renderJSON("注册失败！");
+	}
+
+	/**
+	 * 登陆
+	 * 
+	 * @param userName
+	 * @param pwd
+	 */
+	public static void login(String userName, String pwd) {
+
+		if (StringUtils.isBlank(userName)) {
+			renderJSON("请输入用户名...");
+		}
+
+		if (StringUtils.isBlank(pwd)) {
+			renderJSON("请输入密码...");
+		}
+
+		userName = userName.trim();
+		pwd = MD5Util.MD5(pwd);
+
+		User user = userLogic.selectUser(userName, pwd);
+		if (user != null) {
+			renderJSON("登陆成功");
+		}
+
+		renderJSON("登陆失败，用户名或密码错误！");
+	}
+
 }
