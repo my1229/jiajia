@@ -2,10 +2,12 @@ package controllers;
 
 import org.apache.commons.lang.StringUtils;
 
-import jiajia.app.demo.logic.IUserLogic;
-import jiajia.app.demo.logic.impl.UserLogic;
-import jiajia.app.demo.models.User;
-import jiajia.common.utils.MD5Util;
+import com.rfw.common.utils.MD5Util;
+import com.rfw.jiajia.user.constant.UserStatus;
+import com.rfw.jiajia.user.logic.IUserLogic;
+import com.rfw.jiajia.user.logic.impl.UserLogic;
+import com.rfw.jiajia.user.models.User;
+
 import play.mvc.Controller;
 
 /**
@@ -42,11 +44,11 @@ public class UserCtrl extends Controller {
 			renderJSON("注册失败，用户名已存在！");
 		}
 
-		boolean isVerification = false;
-
 		pwd = MD5Util.MD5(pwd);
 
-		user = new User(userName, pwd, email, isVerification);
+		int status = UserStatus.UN_VERIFIED.getStatus();
+
+		user = new User(userName, pwd, email, status);
 		long ret = userLogic.addUser(user);
 		if (ret > 0) {
 			// TODO MailUtil.sendMail(email, mailTitle, mailConcept);

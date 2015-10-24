@@ -1,1 +1,0 @@
-package jiajia.common.base.models;
