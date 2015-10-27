@@ -3,6 +3,7 @@ package controllers;
 import org.apache.commons.lang.StringUtils;
 
 import com.rfw.common.utils.MD5Util;
+import com.rfw.common.utils.UnicodeUtil;
 import com.rfw.jiajia.user.constant.UserStatus;
 import com.rfw.jiajia.user.logic.IUserLogic;
 import com.rfw.jiajia.user.logic.impl.UserLogic;
@@ -82,6 +83,28 @@ public class UserCtrl extends Controller {
 		}
 
 		renderJSON("登陆失败，用户名或密码错误！");
+	}
+
+	public static void verification(String userName, String session) {
+
+		User user = userLogic.selectUser(userName);
+
+		if (user == null) {
+			renderJSON("验证失败，请先注册！");
+		}
+
+		userName = UnicodeUtil.revert(userName);
+
+		boolean result = userLogic.verification(userName, session);
+
+		if (result) {
+			user.setStatus(user.getStatus() | UserStatus.VERIFIED.getStatus());
+			if (userLogic.updateUser(user) > 0) {
+				renderJSON("验证成功！");
+			}
+		}
+		renderJSON("验证失败，请重新验证！");
+
 	}
 
 }

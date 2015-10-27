@@ -11,44 +11,46 @@ import com.rfw.jiajia.user.models.User;
  */
 public interface IUserLogic {
 
-    /**
-     * 查询用户
-     * 
-     * @param name
-     * @return
-     */
-    public User selectUser(String name);
+	/**
+	 * 查询用户
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public User selectUser(String name);
 
-    /**
-     * 查询用户
-     * 
-     * @param name
-     * @param pwd
-     * @return
-     */
-    public User selectUser(String name, String pwd);
+	/**
+	 * 查询用户
+	 * 
+	 * @param name
+	 * @param pwd
+	 * @return
+	 */
+	public User selectUser(String name, String pwd);
 
-    /**
-     * 添加用户
-     * 
-     * @param user
-     * @return
-     */
-    public long addUser(User user);
+	/**
+	 * 添加用户
+	 * 
+	 * @param user
+	 * @return
+	 */
+	public long addUser(User user);
 
-    /**
-     * 更新用户数据
-     * 
-     * @param user
-     * @return
-     */
-    public long updateUser(User user);
+	/**
+	 * 更新用户数据
+	 * 
+	 * @param user
+	 * @return
+	 */
+	public long updateUser(User user);
 
-    /**
-     * 删除用户
-     * 
-     * @param name
-     * @return
-     */
-    public long deleteUser(String name);
+	/**
+	 * 删除用户
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public long deleteUser(String name);
+
+	public Boolean verification(String userName, String session);
 }
