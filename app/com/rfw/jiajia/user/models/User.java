@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import org.hibernate.annotations.Index;
 
 import com.rfw.common.base.models.BasicGenericModel;
+import com.rfw.jiajia.user.constant.UserStatus;
 
 /**
  * 
@@ -40,6 +41,9 @@ public class User extends BasicGenericModel {
 
 	private String email;
 
+	/**
+	 * 状态 {@link UserStatus}
+	 */
 	private Integer status;
 
 	public User() {
