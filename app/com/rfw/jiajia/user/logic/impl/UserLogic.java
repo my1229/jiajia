@@ -59,16 +59,16 @@ public class UserLogic implements IUserLogic {
 	}
 
 	@Override
-	public Boolean verification(String userName, String session) {
-
-		LOG.warn("userName: " + userName + " is Being verified!");
-
-		User user = selectUser(userName);
+	public Boolean verification(User user, String session) {
 
 		if (user == null) {
-			LOG.error("userName: " + userName + " is not exist!");
+			LOG.error("user is null!");
 			return false;
 		}
+
+		String userName = user.getUserName();
+
+		LOG.warn("userName: " + userName + " is Being verified!");
 
 		String userSession = MD5Util.MD5(userName + user.getEmail());
 

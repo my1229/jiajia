@@ -3,14 +3,20 @@ package com.rfw.jiajia.mail.logic.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.rfw.common.utils.DateUtils;
 import com.rfw.common.utils.MD5Util;
 import com.rfw.common.utils.MailUtil;
 import com.rfw.common.utils.UnicodeUtil;
 import com.rfw.jiajia.mail.logic.IUserRegister;
+import com.rfw.jiajia.user.logic.IUserLogic;
+import com.rfw.jiajia.user.logic.impl.UserLogic;
+import com.rfw.jiajia.user.models.User;
 
 public class UserRegister implements IUserRegister {
 
 	private static final Logger LOG = LoggerFactory.getLogger(UserRegister.class);
+
+	private static IUserLogic userLogic = UserLogic.getInstance();
 
 	private static IUserRegister Instance = new UserRegister();
 
@@ -26,9 +32,21 @@ public class UserRegister implements IUserRegister {
 
 		String mailTitle = "会员邮箱认证--来自加加";
 
-		// TODO
+		User user = userLogic.selectUser(userName);
 
-		String session = MD5Util.MD5(userName + emailAddr);
+		// TODO
+		Long validateTime = user.getValidateTime();
+		Long now = System.currentTimeMillis();
+
+		validateTime = validateTime == null ? 0 : validateTime;
+
+		if (validateTime == 0 || (validateTime - now > DateUtils.DAY_MILLIS)) {
+			validateTime = now;
+			user.setValidateTime(validateTime);
+			user.setValidateCode(MD5Util.MD5(validateTime + userName + emailAddr));
+			userLogic.updateUser(user);
+		}
+		String session = MD5Util.MD5(validateTime + userName + emailAddr);
 
 		String unicodeName = UnicodeUtil.convert(userName);
 

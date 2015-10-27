@@ -42,8 +42,6 @@ public class UnicodeUtil {
 	 * @return 普通字符串
 	 */
 	public static String revert(String str) {
-		System.out.println(str);
-
 		str = (str == null ? "" : str);
 		if (str.indexOf("\\u") == -1) // 如果不是unicode码则原样返回
 			return str;

@@ -16,6 +16,7 @@
 		,email
 		,status
 		,validate_code
+		,validate_time
 		,add_ts
 		,update_ts
 	</sql>
@@ -27,6 +28,7 @@
 		<result property="email" column="email" />
 		<result property="status" column="status" />
 		<result property="validateCode" column="validate_code" />
+		<result property="validateTime" column="validate_time" />
 		<result property="addTs" column="add_ts" />
 		<result property="updateTs" column="update_ts" />
 	</resultMap>
@@ -84,7 +86,8 @@
 		<include refid="fileds" />
 		)
 		VALUES
-		(null,#{userName},#{pwd},#{email},#{status},#{validateCode},#{addTs},null);
+		(null,#{userName},#{pwd},#{email},#{status},#{validateCode},#{validateTime}
+		,#{addTs},null);
 	</insert>
 
 	<!-- 批量插入 -->
@@ -102,7 +105,8 @@
 		VALUES
 		<foreach collection="list" item="user" index="index"
 			separator=",">
-			(null,#{user.userName},#{user.pwd},#{user.email},#{user.status},#{user.validateCode}
+			(null,#{user.userName},#{user.pwd},#{user.email},#{user.status}
+			,#{user.validateCode},#{user.validateTime}
 			,#{addTs},null);
 		</foreach>
 	</insert>
@@ -115,6 +119,8 @@
 			<if test="userName != null">user_name=#{userName},</if>
 			<if test="status != null">status=#{status},</if>
 			<if test="validateCode != null">validate_code=#{validateCode}</if>
+			<if test="validateTime != null">validate_time=#{validateTime}</if>
+			
 		</set>
 		WHERE uid=#{uid}
 		;

@@ -2,6 +2,7 @@ package controllers;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.rfw.common.utils.DateUtils;
 import com.rfw.common.utils.MD5Util;
 import com.rfw.common.utils.UnicodeUtil;
 import com.rfw.jiajia.mail.logic.IUserRegister;
@@ -93,16 +94,19 @@ public class UserCtrl extends Controller {
 
 	public static void verification(String userName, String session) {
 
-		System.out.println(userName);
 		userName = UnicodeUtil.revert(userName);
-		System.err.println(userName);
 		User user = userLogic.selectUser(userName);
+		Long now = System.currentTimeMillis();
 
 		if (user == null) {
 			renderJSON("验证失败，请先注册！");
 		}
 
-		boolean result = userLogic.verification(userName, session);
+		if (now - user.getValidateTime() > DateUtils.DAY_MILLIS) {
+			renderJSON("验证链接已过期，请重新验证！");
+		}
+
+		boolean result = userLogic.verification(user, session);
 
 		if (result) {
 			user.setStatus(user.getStatus() | UserStatus.VERIFIED.getStatus());

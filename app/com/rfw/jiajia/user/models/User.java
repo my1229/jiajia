@@ -52,6 +52,12 @@ public class User extends BasicGenericModel {
 	@Column(name = "validate_code")
 	private String validateCode;
 
+	/**
+	 * 激活时间
+	 */
+	@Column(name = "validate_time")
+	private Long validateTime;
+
 	public User() {
 	}
 
@@ -109,6 +115,14 @@ public class User extends BasicGenericModel {
 
 	public void setValidateCode(String validateCode) {
 		this.validateCode = validateCode;
+	}
+
+	public Long getValidateTime() {
+		return validateTime;
+	}
+
+	public void setValidateTime(Long validateTime) {
+		this.validateTime = validateTime;
 	}
 
 }

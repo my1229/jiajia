@@ -52,5 +52,5 @@ public interface IUserLogic {
 	 */
 	public long deleteUser(String name);
 
-	public Boolean verification(String userName, String session);
+	public Boolean verification(User user, String session);
 }
