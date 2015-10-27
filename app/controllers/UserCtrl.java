@@ -4,6 +4,8 @@ import org.apache.commons.lang.StringUtils;
 
 import com.rfw.common.utils.MD5Util;
 import com.rfw.common.utils.UnicodeUtil;
+import com.rfw.jiajia.mail.logic.IUserRegister;
+import com.rfw.jiajia.mail.logic.impl.UserRegister;
 import com.rfw.jiajia.user.constant.UserStatus;
 import com.rfw.jiajia.user.logic.IUserLogic;
 import com.rfw.jiajia.user.logic.impl.UserLogic;
@@ -21,6 +23,7 @@ import play.mvc.Controller;
 public class UserCtrl extends Controller {
 
 	private static IUserLogic userLogic = UserLogic.getInstance();
+	private static IUserRegister userRegister = UserRegister.getInstance();
 
 	/**
 	 * 注册
@@ -53,6 +56,9 @@ public class UserCtrl extends Controller {
 		long ret = userLogic.addUser(user);
 		if (ret > 0) {
 			// TODO MailUtil.sendMail(email, mailTitle, mailConcept);
+
+			userRegister.sendRegisterEmail(userName, email);
+
 			renderJSON("请登录您的邮箱：" + email + "进行最后的验证...");
 		}
 		renderJSON("注册失败！");
@@ -87,13 +93,14 @@ public class UserCtrl extends Controller {
 
 	public static void verification(String userName, String session) {
 
+		System.out.println(userName);
+		userName = UnicodeUtil.revert(userName);
+		System.err.println(userName);
 		User user = userLogic.selectUser(userName);
 
 		if (user == null) {
 			renderJSON("验证失败，请先注册！");
 		}
-
-		userName = UnicodeUtil.revert(userName);
 
 		boolean result = userLogic.verification(userName, session);
 

@@ -42,13 +42,15 @@ public class UnicodeUtil {
 	 * @return 普通字符串
 	 */
 	public static String revert(String str) {
+		System.out.println(str);
+
 		str = (str == null ? "" : str);
 		if (str.indexOf("\\u") == -1) // 如果不是unicode码则原样返回
 			return str;
 
 		StringBuffer sb = new StringBuffer(1000);
 
-		for (int i = 0; i < str.length() - 6;) {
+		for (int i = 0; i <= str.length() - 6;) {
 			String strTemp = str.substring(i, i + 6);
 			String value = strTemp.substring(2);
 			int c = 0;
@@ -88,10 +90,9 @@ public class UnicodeUtil {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(new UnicodeUtil().convert("我是天才123hahah"));
+		System.out.println(new UnicodeUtil().convert("folway"));
 
-		System.out.println(
-				new UnicodeUtil().revert("\u6211\u662f\u5929\u624d\u0031\u0032\u0033\u0068\u0061\u0068\u0061\u0068"));
+		System.out.println(new UnicodeUtil().revert("\u0066\u006f\u006c\u0077\u0061\u0079"));
 	}
 
 }

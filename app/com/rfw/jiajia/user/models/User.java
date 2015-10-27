@@ -46,6 +46,12 @@ public class User extends BasicGenericModel {
 	 */
 	private Integer status;
 
+	/**
+	 * 激活码
+	 */
+	@Column(name = "validate_code")
+	private String validateCode;
+
 	public User() {
 	}
 
@@ -97,10 +103,12 @@ public class User extends BasicGenericModel {
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "User [uid=" + uid + ", userName=" + userName + ", pwd=" + pwd + ", email=" + email + ", status="
-				+ status + "]";
+	public String getValidateCode() {
+		return validateCode;
+	}
+
+	public void setValidateCode(String validateCode) {
+		this.validateCode = validateCode;
 	}
 
 }

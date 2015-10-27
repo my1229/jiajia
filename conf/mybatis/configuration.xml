@@ -5,7 +5,7 @@
 <configuration>
 	<typeAliases>
 		<!-- Ex: -->
-		<typeAlias type="yunbei.app.demo.models.User" alias="User" />
+		<typeAlias type="com.rfw.jiajia.user.models.User" alias="User" />
 
 	</typeAliases>
 
@@ -23,7 +23,7 @@
 	<mappers>
 
 		<!-- Ex: -->
-		<mapper resource="yunbei/app/demo/dao/xmls/UserMapper.xml" />
+		<mapper resource="com/rfw/jiajia/user/dao/xmls/UserMapper.xml" />
 
 	</mappers>
 </configuration>
