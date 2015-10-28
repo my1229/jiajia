@@ -118,7 +118,7 @@
 		<set>
 			<if test="userName != null">user_name=#{userName},</if>
 			<if test="status != null">status=#{status},</if>
-			<if test="validateCode != null">validate_code=#{validateCode}</if>
+			<if test="validateCode != null">validate_code=#{validateCode},</if>
 			<if test="validateTime != null">validate_time=#{validateTime}</if>
 			
 		</set>

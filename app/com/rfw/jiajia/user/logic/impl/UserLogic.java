@@ -18,66 +18,68 @@ import com.rfw.jiajia.user.models.User;
  */
 public class UserLogic implements IUserLogic {
 
-	private static final Logger LOG = LoggerFactory.getLogger(UserLogic.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserLogic.class);
 
-	private static IUserDao userDao = UserDaoImpl.getInstance();
+    private static IUserDao userDao = UserDaoImpl.getInstance();
 
-	private UserLogic() {
-	}
+    private UserLogic() {
+    }
 
-	private static class UserLogicHolder {
-		private static IUserLogic instance = new UserLogic();
-	}
+    private static class UserLogicHolder {
+        private static IUserLogic instance = new UserLogic();
+    }
 
-	public static IUserLogic getInstance() {
-		return UserLogicHolder.instance;
-	}
+    public static IUserLogic getInstance() {
+        return UserLogicHolder.instance;
+    }
 
-	@Override
-	public User selectUser(String name) {
-		return userDao.selectByName(name);
-	}
+    @Override
+    public User selectUser(String name) {
+        return userDao.selectByName(name);
+    }
 
-	@Override
-	public User selectUser(String name, String pwd) {
-		return userDao.selectByNameAndPwd(name, pwd);
-	}
+    @Override
+    public User selectUser(String name, String pwd) {
+        return userDao.selectByNameAndPwd(name, pwd);
+    }
 
-	@Override
-	public long addUser(User user) {
-		return userDao.insert(user);
-	}
+    @Override
+    public long addUser(User user) {
+        return userDao.insert(user);
+    }
 
-	@Override
-	public long updateUser(User user) {
-		return userDao.updateById(user);
-	}
+    @Override
+    public long updateUser(User user) {
+        return userDao.updateById(user);
+    }
 
-	@Override
-	public long deleteUser(String name) {
-		return userDao.deleteByName(name);
-	}
+    @Override
+    public long deleteUser(String name) {
+        return userDao.deleteByName(name);
+    }
 
-	@Override
-	public Boolean verification(User user, String session) {
+    @Override
+    public Boolean verification(User user, String session) {
 
-		if (user == null) {
-			LOG.error("user is null!");
-			return false;
-		}
+        if (user == null) {
+            LOG.error("user is null!");
+            return false;
+        }
 
-		String userName = user.getUserName();
+        String userName = user.getUserName();
 
-		LOG.warn("userName: " + userName + " is Being verified!");
+        Long validateTime = user.getValidateTime();
 
-		String userSession = MD5Util.MD5(userName + user.getEmail());
+        LOG.warn("userName: " + userName + " is Being verified!");
 
-		if (userSession.equals(session)) {
-			LOG.warn("userName: " + userName + " Validation succeed");
-			return true;
-		}
-		LOG.error("userName: " + userName + " Validation failed");
-		return false;
-	}
+        String userSession = MD5Util.MD5(validateTime + userName + user.getEmail());
+
+        if (userSession.equals(session)) {
+            LOG.warn("userName: " + userName + " Validation succeed");
+            return true;
+        }
+        LOG.error("userName: " + userName + " Validation failed");
+        return false;
+    }
 
 }
