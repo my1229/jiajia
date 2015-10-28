@@ -54,7 +54,7 @@ public class UserRegister implements IUserRegister {
 
 		String unicodeName = UnicodeUtil.convert(userName);
 
-		String url = "www.jiajiachen.com/UserCtrl/verification?userName=" + unicodeName + "&session=" + session;
+		String url = "www.jiajiachen.cn/UserCtrl/verification?userName=" + unicodeName + "&session=" + session;
 
 		String mailConcept = "您好：" + userName + "\n      您正在加加进行邮箱验证，请点击您的验证链接 " + url + " 完成注册。"
 				+ "\n      为确保您能正常收到系统发的通知，我们强烈推荐您将folway@qq.com加进您的邮箱的白名单或通讯录。\n      若有不清楚的地方，请咨询我司在线客服，或致电：18768184438，感谢您的支持！";
