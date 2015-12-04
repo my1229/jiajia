@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunbei.dangkou.item.dao.mapper.interfaces.IItemDescrDaoMapper">
+	<sql id="table">item_descr</sql>
+
+	<sql id="fileds">
+		numIid
+	   ,descr
+	   ,gmtCreated
+	</sql>
+	
+	<resultMap type="ItemDescr" id="resultItemDescrMap">
+	  <id property="id" column="id" />
+	  <result property="numIid" column="numIid"/>
+	  <result property="descr" column="descr"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="ItemDescr" useGeneratedKeys="true" keyProperty="id">
+	 insert into
+	  <include refid="table" />
+	  (
+	  <include refid="fileds" />
+	  )
+	  values
+		(#{numIid},#{descr},now());
+	</insert>
+	
+	<insert id="insertBatch" parameterType="map">
+		insert into
+		<include refid="table" />
+		(
+		<include refid="fileds" />
+		)
+		values
+		<foreach collection="itemDescrs" item="itemDescr" index="index"
+			separator=",">
+			(#{itemDescr.numIid},#{itemDescr.descr},#{itemDescr.gmtCreated})
+		</foreach>
+	</insert>
+	
+	<update id="update" parameterType="ItemDescr">
+	  update
+	  <include refid="table"/>
+	  <set>
+	    <if test="descr!=null">descr=#{descr}</if>
+	  </set>
+	  where numIid=#{numIid}
+	</update>
+	
+	<select id="findByNumIid" parameterType="long" resultMap="resultItemDescrMap">
+	  select 
+	    <include refid="fileds"/>
+	  from 
+	    <include refid="table"/>
+	  where numIid=#{numIid} limit 1
+	</select>
+	<select id="findById" parameterType="long" resultMap="resultItemDescrMap">
+	  select 
+	    <include refid="fileds"/>
+	  from 
+	    <include refid="table"/>
+	  where id=#{id}
+	</select>
+</mapper>
+

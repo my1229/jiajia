@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunbei.dangkou.item.dao.mapper.interfaces.IItemDescrTmpDaoMapper">
+	<sql id="table">item_descr_tmp</sql>
+
+	<sql id="fileds">
+		numIid
+	   ,descr
+	   ,gmtCreated
+	</sql>
+	
+	<resultMap type="ItemDescrTemp" id="resultItemDescrMap">
+	  <id property="id" column="id" />
+	  <result property="numIid" column="numIid"/>
+	  <result property="descr" column="descr"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="ItemDescrTemp" useGeneratedKeys="true" keyProperty="id">
+	 insert into
+	  <include refid="table" />
+	  (
+	  <include refid="fileds" />
+	  )
+	  values
+		(#{numIid},#{descr},now());
+	</insert>
+</mapper>
+

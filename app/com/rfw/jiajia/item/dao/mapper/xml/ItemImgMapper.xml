@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunbei.dangkou.item.dao.mapper.interfaces.IItemImgDaoMapper">
+	<sql id="table">item_img</sql>
+
+	<sql id="fileds">
+	    imgId
+	   ,numIid
+	   ,url
+	   ,position
+	   ,created
+	   ,gmtCreated
+	</sql>
+	
+	<resultMap type="ItemImg" id="resultItemImgMap">
+       <id property="id" column="id"/>
+       <result property="numIid" column="numIid"/>
+       <result property="url" column="url"/>
+       <result property="position" column="position"/>
+       <result property="created" column="created"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="ItemImg" useGeneratedKeys="true" keyProperty="id">
+	 insert into
+	  <include refid="table" />
+	  (
+	  <include refid="fileds" />
+	  )
+	  values (#{imgId},#{numIid},#{url},#{position},#{created},now());
+	</insert>
+	
+	<insert id="insertBatch" parameterType="map">
+		insert into
+		<include refid="table" />
+		(
+		<include refid="fileds" />
+		)
+		values
+		<foreach collection="itemImgs" item="itemImg" index="index"
+			separator=",">
+			(#{itemImg.imgId},#{itemImg.numIid},#{itemImg.url},#{itemImg.position},#{itemImg.created},#{itemDescr.gmtCreated})
+		</foreach>
+	</insert>
+	
+	<delete id="delete" parameterType="long" >
+	  delete from 
+	  <include refid="table"/>
+	  where numIid=#{numIid}
+	</delete>
+	
+	<select id="findByNumIid" parameterType="long" resultMap="resultItemImgMap">
+	  select
+	  <include refid="fileds"/>
+	  from 
+	  <include refid="table"/>
+	  where numIid=#{numIid}
+	</select>
+	
+</mapper>

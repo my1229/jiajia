@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunbei.dangkou.shopcart.dao.mapper.interfaces.IShopCartDetailMapper">
+	<sql id="table">shop_cart_detail</sql>
+
+	<sql id="fileds">
+		id
+	   ,numIid
+	   ,accountId
+	   ,stallId
+	   ,sellerNick
+	   ,sellerMobile
+	   ,shopName
+	   ,price
+	   ,shopCartId
+	   ,propsName
+	   ,sku
+	   ,num
+	   ,picPath
+	   ,title
+	   ,status
+	   ,reducePrice
+	   ,outerId
+	   ,modified
+	   ,gmtCreated
+	   ,gmtModified
+	</sql>
+	
+	<resultMap type="ShopCartDetail" id="resultShopCartDetailMap">
+	  <id property="id" column="id"/>
+	  <result property="numIid" column="numIid"/>
+	  <result property="accountId" column="accountId"/>
+	  <result property="stallId" column="stallId"/>
+	  <result property="sellerNick" column="sellerNick"/>
+	  <result property="sellerMobile" column="sellerMobile"/>
+	  <result property="shopName" column="shopName"/>
+	  <result property="price" column="price"/>
+	  <result property="shopCartId" column="shopCartId"/>
+	  <result property="propsName" column="propsName"/>
+	  <result property="sku" column="sku"/>
+	  <result property="num" column="num"/>
+	  <result property="picPath" column="picPath"/>
+	  <result property="title" column="title"/>
+	  <result property="status" column="status"/>
+	  <result property="reducePrice" column="reducePrice"/>
+	  <result property="outerId" column="outerId"/>
+	  <result property="modified" column="modified"/>
+	  <result property="gmtModified" column="gmtModified"/>
+	  
+	</resultMap>
+	
+    <insert id="insert" parameterType="ShopCartDetail" useGeneratedKeys="true" keyProperty="id">
+		insert into
+		<include refid="table" />
+		(
+		<include refid="fileds" />
+		)
+		values
+		(null,#{numIid},#{accountId},#{stallId},#{sellerNick},#{sellerMobile},#{shopName},#{price},
+		 #{shopCartId},#{propsName},#{sku},#{num},#{picPath},#{title},#{status},#{reducePrice},#{outerId},#{modified},now(),null);
+	</insert>
+	
+	<update id="update" parameterType="ShopCartDetail">
+	  update
+	  <include refid="table"/>
+	  <set>
+	    <if test="sku!=null">sku=#{sku},</if>
+	    <if test="num!=null">num=#{num},</if>
+	    <if test="price!=null">price=#{price},</if>
+	    <if test="status!=null">status=#{status},</if>
+	    <if test="modified!=null">modified=#{modified},</if>
+	    <if test="reducePrice!=null">reducePrice=#{reducePrice}</if>
+	    
+	  </set>
+	  where id=#{id}
+	</update>
+	
+	<update id="updateBatch" parameterType="map">
+	 update 
+	 <include refid="table"/>
+	 <set>
+	   <if test="num!=null">num=#{num},</if>
+	   <if test="status!=null">status=#{status}</if>
+	 </set>	
+	 where id in
+	 <foreach collection="ids" index="index" item="i" open="(" separator="," close=")" >    
+            #{i}    
+      </foreach>  
+	</update>
+	
+	<select id="findByNumIidAndProps" parameterType="map" resultMap="resultShopCartDetailMap">
+	 select 
+	 <include refid="fileds"/>
+	 from 
+	 <include refid="table"/>
+	 where numIid=#{numIid} and propsName=#{propsName} and accountId=#{accountId} 
+	</select>
+	
+	<select id="findByAccount" parameterType="String" resultMap="resultShopCartDetailMap">
+	 select 
+	 <include refid="fileds"/>
+	 from 
+	 <include refid="table"/>
+	 where accountId=#{accountId} and status!=1 order by stallId, modified desc
+	</select>
+	
+	<select id="findByCartId" parameterType="Long" resultMap="resultShopCartDetailMap">
+	 select 
+	 <include refid="fileds"/>
+	 from 
+	 <include refid="table"/>
+	 where shopCartId=#{cartId} and status!=1 order by modified desc ,stallId
+	</select>
+	
+    <select id="findById" parameterType="Long" resultMap="resultShopCartDetailMap">
+	 select 
+	 <include refid="fileds"/>
+	 from 
+	 <include refid="table"/>
+	 where id=#{id}
+	</select>
+	
+	<select id="countByAccount" parameterType="String" resultType="long">
+	 select count(*) from 
+	 <include refid="table"/>
+	 where accountId=#{accountId} and status !=1
+	</select>
+	
+</mapper>

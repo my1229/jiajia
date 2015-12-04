@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunbei.dangkou.item.dao.mapper.interfaces.IItemLocationDaoMapper">
+	<sql id="table">item_location</sql>
+
+	<sql id="fileds">
+		numIid
+	   ,city
+	   ,state
+	   ,gmtCreated
+	</sql>
+	
+	<resultMap type="ItemLocation" id="resultItemLocationMap">
+	  <id property="id" column="id"/>
+	  <result property="numIid" column="numIid"/>
+	  <result property="city" column="city"/>
+	  <result property="state" column="state"/>
+	</resultMap>
+	
+	
+	<insert id="insert" parameterType="ItemLocation" useGeneratedKeys="true" keyProperty="id">
+	 insert into
+	  <include refid="table" />
+	  (
+	  <include refid="fileds" />
+	  )
+	  values
+		(#{numIid},#{city},#{state},now());
+	</insert>
+	
+	<insert id="insertBatch" parameterType="map">
+		insert into
+		<include refid="table" />
+		(
+		<include refid="fileds" />
+		)
+		values
+		<foreach collection="itemLocations" item="itemLocation" index="index"
+			separator=",">
+			(#{itemLocation.numIid},#{itemLocation.city},#{itemLocation.state},#{itemDescr.gmtCreated})
+		</foreach>
+	</insert>
+	
+	<update id="update" parameterType="ItemLocation">
+	  update
+	  <include refid="table"/>
+	  <set>
+	    <if test="city!=null">city=#{city},</if>
+	    <if test="state!=null">state=#{state}</if>
+	  </set>
+	  where numIid=#{numIid}
+	</update>
+	
+	<select id="findByNumIid" parameterType="long" resultMap="resultItemLocationMap">
+	  select 
+	  <include refid="fileds"/>
+	  from 
+	  <include refid="table"/>
+	  where numIid=#{numIid} limit 1
+	</select>
+	
+</mapper>

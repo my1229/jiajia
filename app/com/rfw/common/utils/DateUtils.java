@@ -278,6 +278,17 @@ public class DateUtils {
         return c.getTimeInMillis();
     }
 
+    public static long getFirstMillisOfDay(Long millis, int offset) {
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(millis);
+        c.add(Calendar.DAY_OF_YEAR, offset);
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        return c.getTimeInMillis();
+    }
+
     /**
      * 获取beginTs和endTs间的月份差异
      * 

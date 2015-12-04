@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunbei.dangkou.item.dao.mapper.interfaces.IItemPlayDaoMapper">
+	<sql id="table">item</sql>
+
+	<sql id="fileds">
+		numIid
+	   ,nick
+	   ,title
+	   ,picUrl
+	   ,outerId
+	   ,cid
+	   ,price
+	   ,approveStatus
+	   ,listTime
+	   ,deListTime
+	   ,modified
+	   ,num
+	   ,hasShowCase
+	   ,propsName
+	   ,sellerCids
+	   ,postageId
+	   ,freightPayer
+	   ,postFee
+	   ,emsFee
+	   ,expressFee
+	   ,tradePrice
+	   ,localApproveStatus
+	   ,isDelete
+	   ,created
+	   ,isOauth
+	   ,reducePrice
+	   ,needCheckPrice
+	   ,gmtCreated
+	</sql>
+	
+	<sql id="resultFileds">
+		numIid
+	   ,nick
+	   ,title
+	   ,picUrl
+	   ,outerId
+	   ,cid
+	   ,price
+	   ,approveStatus
+	   ,listTime
+	   ,deListTime
+	   ,modified
+	   ,num
+	   ,hasShowCase
+	   ,propsName
+	   ,sellerCids
+	   ,postageId
+	   ,isShowCase
+	   ,freightPayer
+	   ,postFee
+	   ,emsFee
+	   ,expressFee
+	   ,tradePrice
+	   ,localApproveStatus
+	   ,isDelete
+	   ,created
+	   ,isOauth
+	   ,reducePrice
+	   ,needCheckPrice
+	</sql>
+	
+	<resultMap type="ItemPlay" id="resultItemPlayMap">
+	 <id property="numIid" column="numIid"/>
+	 <result property="nick" column="nick"/>
+	 <result property="title" column="title"/>
+	 <result property="picUrl" column="picUrl"/>
+	 <result property="outerId" column="outerId"/>
+	 <result property="cid" column="cid"/>
+	 <result property="approveStatus" column="approveStatus"/>
+	 <result property="price" column="price"/>
+	 <result property="listTime" column="listTime"/>
+	 <result property="deListTime" column="deListTime"/>
+	 <result property="modified" column="modified"/>
+	 <result property="hasShowCase" column="hasShowCase"/>
+	 <result property="propsName" column="propsName"/>
+	 <result property="sellerCids" column="sellerCids"/>
+	 <result property="postageId" column="postageId"/>
+	 <result property="freightPayer" column="freightPayer"/>
+	 <result property="postFee" column="postFee"/>
+	 <result property="emsFee" column="emsFee"/>
+	 <result property="expressFee" column="expressFee"/>
+	 <result property="localApproveStatus" column="localApproveStatus"/>  
+	 <result property="isDelete" column="isDelete"/>  
+	 <result property="created" column="created"/>  
+	 <result property="isOauth" column="isOauth"/>    
+	 <result property="isShowCase" column="isShowCase"/>  
+	 <result property="reducePrice" column="reducePrice"/>    
+	 <result property="needCheckPrice" column="needCheckPrice"/>       
+	</resultMap>
+	
+	<resultMap type="ItemRankDto" id="resultItemRankMap">
+	 <id property="numIid" column="numIid"/>
+	 <result property="title" column="title"/>
+	 <result property="picUrl" column="picUrl"/>
+	 <result property="price" column="price"/>
+	 <result property="tradePrice" column="tradePrice"/>
+	 <result property="count" column="count"/> 
+	</resultMap>
+	
+	<insert id="insert" parameterType="ItemPlay" useGeneratedKeys="true" keyProperty="id">
+	 insert into
+	  <include refid="table" />
+	  (
+	  <include refid="fileds" />
+	  )
+	  values
+		(#{numIid},#{nick},#{title},#{picUrl},#{outerId},#{cid},#{price},#{approveStatus},
+		 #{listTime},#{deListTime},#{modified},#{num},#{hasShowCase},#{propsName},#{sellerCids},
+		 #{postageId},#{freightPayer},#{postFee},#{emsFee},#{expressFee},#{tradePrice},#{localApproveStatus},#{isDelete},#{created},#{isOauth},#{reducePrice},#{needCheckPrice},now());
+	</insert>
+	
+	<insert id="insertBatch" parameterType="map">
+		insert into
+		<include refid="table" />
+		(
+		<include refid="fileds" />
+		)
+		values
+		<foreach collection="itemPlays" item="itemPlay" index="index"
+			separator=",">
+			(#{itemPlay.numIid},#{itemPlay.nick},#{itemPlay.title},#{itemPlay.picUrl},#{itemPlay.outerId},
+			 #{itemPlay.cid},#{itemPlay.price},#{itemPlay.approveStatus},#{itemPlay.listTime},#{itemPlay.deListTime},
+			 #{itemPlay.modified},#{itemPlay.num},#{itemPlay.hasShowCase},#{itemPlay.propName},#{itemPlay.sellerCids},
+			 #{itemPlay.postageId},#{itemPlay.freightPayer},#{itemPlay.postFee},#{itemPlay.emsFee},#{itemPlay.expressFee},
+			 #{itemPlay.tradePrice},#{itemPlay.localApproveStatus},#{itemPlay.isDelete},#{created},#{isOauth},#{reducePrice},#{needCheckPrice},#{itemPlay.gmtCreated})
+		</foreach>
+	</insert>
+	
+	<update id="update" parameterType="ItemPlay">
+	 
+		  update
+		  <include refid="table"/>
+		  <set>
+		    <if test="nick!=null">nick=#{nick},</if>
+		    <if test="title!=null">title=#{title},</if>
+		    <if test="picUrl!=null">picUrl=#{picUrl},</if>
+		    <if test="outerId!=null">outerId=#{outerId},</if>
+		    <if test="cid!=null">cid=#{cid},</if>
+		    <if test="price!=null">price=#{price},</if>
+		    <if test="approveStatus!=null">approveStatus=#{approveStatus},</if>
+		    <if test="listTime!=null">listTime=#{listTime},</if>
+		    <if test="deListTime!=null">deListTime=#{deListTime},</if>
+		    <if test="modified!=null">modified=#{modified},</if>
+		    <if test="num!=null">num=#{num},</if>
+		    <if test="hasShowCase!=null">hasShowCase=#{hasShowCase},</if>
+		    <if test="propsName!=null">propsName=#{propsName},</if>
+		    <if test="sellerCids!=null">sellerCids=#{sellerCids},</if>
+		    <if test="postageId!=null">postageId=#{postageId},</if>
+		    <if test="freightPayer!=null">freightPayer=#{freightPayer},</if>
+		    <if test="postFee!=null">postFee=#{postFee},</if>
+		    <if test="emsFee!=null">emsFee=#{emsFee},</if>
+		    <if test="expressFee!=null">expressFee=#{expressFee},</if>
+		    <if test="tradePrice!=null">tradePrice=#{tradePrice},</if>
+		    <if test="localApproveStatus!=null">localApproveStatus=#{localApproveStatus},</if>
+		    <if test="isDelete!=null">isDelete=#{isDelete},</if>
+		    <if test="created!=null">created=#{created}, </if>
+		    <if test="isShowCase!=null">isShowCase=#{isShowCase},</if>
+		    <if test="reducePrice!=null">reducePrice=#{reducePrice},</if>
+		    <if test="needCheckPrice!=null">needCheckPrice=#{needCheckPrice}</if>
+		 
+		    
+		  </set>
+	  where numIid=#{numIid}
+ 
+	</update>
+	
+	<update id="updateIsOauth" parameterType="String">
+	  update
+	  <include refid="table"/>
+	  <set>
+	    <if test="isOauth!=null">isOauth=#{isOauth}</if>
+	  </set>
+	  where nick=#{nick}
+	</update>
+	
+	
+	<update id="updateReducePrice" parameterType="String">
+	  update
+	  <include refid="table"/>
+	  <set>
+	    <if test="reducePrice!=null">reducePrice=#{reducePrice}</if>
+	  </set>
+
+	 where  nick = #{nick} and   numIid in 
+	     <foreach item="item" index="index" collection="numIids" 
+                         open="(" separator="," close=")">
+                        #{item}
+         </foreach>     
+	
+	</update>
+	
+	
+	<update id="updateTradePrice" parameterType="String">
+	  update
+	  <include refid="table"/>
+	  <set>
+	    <if test="tradePrice!=null">tradePrice=#{tradePrice}</if>
+	  </set>
+
+	 where  nick = #{nick} and   numIid  = #{numIid}
+	
+	</update>
+	
+	
+	<update id="updateStatus" parameterType="String">
+	  update
+	  <include refid="table"/>
+	  <set>
+	    <if test="approveStatus!=null">approveStatus=#{approveStatus},</if>
+	    <if test="localApproveStatus!=null">localApproveStatus=#{localApproveStatus},</if>
+	    <if test="isDelete!=null">isDelete=#{isDelete}</if>
+	    
+	    
+	    
+	  </set>
+
+	 where  nick = #{nick} and   numIid  = #{numIid}
+	
+	</update>
+	
+	
+	
+	<update id="updateReducePriceByNick" parameterType="String">
+	  update
+	  <include refid="table"/>
+	  <set>
+	    <if test="reducePrice!=null">reducePrice=#{reducePrice}</if>
+	  </set>
+
+	 where  nick = #{nick} 
+	
+	</update>
+	
+	<update id="updateIsDelete" parameterType="String">
+	  update
+	  <include refid="table"/>
+	  <set>
+	    <if test="isDelete!=null">isDelete=#{isDelete}</if>
+	  </set>
+	  where numIid=#{numIid}
+	</update>
+	
+	<select id="getItemList" parameterType="map" resultMap="resultItemPlayMap">
+	  select 
+	  <include refid="resultFileds"/>
+	  from 
+	  <include refid="table"/>
+	  limit #{offset},#{limit}
+	</select>
+	
+	
+	
+	<select id="count" resultType="long">
+	  select count(*) from 
+	  <include refid="table"/>
+	</select>
+	
+	<select id="search" parameterType="map" resultMap="resultItemPlayMap">
+	  select
+	  <include refid="resultFileds"/>
+	  from
+	  <include refid="table"/>
+	  <where>
+	    <if test="nick!=null">nick=#{nick}</if>
+	    <if test="localApproveStatus!=null"> and localApproveStatus=#{localApproveStatus}</if>
+        <if test="outId!=null"> and outId like #{outerId}</if>
+        <if test="tradePrice==true"> and tradePrice > 0</if>
+        <if test="tradePrice==false"> and ( tradePrice = 0 or needCheckPrice = 2 )</if>
+	    <if test="subCids!=null">
+	      and
+	      <foreach collection="subCids" item="subCid" index="index" open="(" separator="or" close=")">
+	        sellerCids like #{subCid}
+	      </foreach>
+	    </if>
+	    <if test="title != null"> and title like #{title}</if>
+	    <if test="upPrice!=null"> and price &lt; #{upPrice}</if>
+	    <if test="lowPrice!=null">and price  &gt; #{lowPrice}</if>
+	  </where>
+	  <if test="orderBy!=null">order by created desc,numIid DESC,${orderBy} ${sort}</if>
+	  <if test="offset!=null">limit #{offset},#{limit}</if>
+	</select>
+	
+	<select id="countByNick" parameterType="map" resultType="long">
+       select count(*) from 
+       <include refid="table"/>
+       <where>
+         <if test="nick!=null">nick=#{nick}</if>
+         <if test="localApproveStatus!=null"> and localApproveStatus=#{localApproveStatus}</if>
+         <if test="outId!=null"> and outId like #{outerId}</if>
+         <if test="tradePrice==true"> and tradePrice !=0</if>
+         <if test="tradePrice==false"> and (tradePrice =0 or tradePrice is null) </if>
+         <if test="sellerCids != null">
+				and
+				<foreach collection="sellerCids" item="sellerCid" index="index"
+					open="(" separator="or" close=")">
+					sellerCids like
+					#{sellerCid}
+				</foreach>
+		 </if>
+		 <if test="title != null">and title like  #{title}</if>
+		 <if test="upPrice!=null"> and price &lt; #{upPrice}</if>
+	     <if test="lowPrice!=null">and price  &gt; #{lowPrice}</if>
+       </where>
+	</select>
+	
+	<select id="findByNumIid" parameterType="long" resultMap="resultItemPlayMap">
+	  select
+	  <include refid="resultFileds"/>
+	  from 
+	  <include refid="table"/>
+	  where numIid=#{numIid} limit 1
+	</select>
+	
+	<select id="findByNick" parameterType="String" resultMap="resultItemPlayMap">
+	  select 
+	  <include refid="resultFileds"/>
+	  from
+	  <include refid="table"/>
+	  where nick=#{nick}
+	</select>
+	
+	<select id="findAllCid" resultType="long">
+	  select distinct cid from item
+	</select>
+	
+	
+	<select id="findInCompleteItems" resultMap="resultItemPlayMap">
+	  select
+	  <include refid="resultFileds"/>
+	   from 
+	   <include refid="table"/>
+	     where (propsName is null or created is null or picUrl is null) and isDelete = 0;
+	</select>
+	
+		<select id="findNoDescItems" resultMap="resultItemPlayMap">
+	  select
+	  item.numIid
+	   ,nick
+	   ,title
+	   ,picUrl
+	   ,outerId
+	   ,cid
+	   ,price
+	   ,approveStatus
+	   ,listTime
+	   ,deListTime
+	   ,modified
+	   ,num
+	   ,hasShowCase
+	   ,propsName
+	   ,sellerCids
+	   ,postageId
+	   ,isShowCase
+	   ,freightPayer
+	   ,postFee
+	   ,emsFee
+	   ,expressFee
+	   ,tradePrice
+	   ,localApproveStatus
+	   ,isDelete
+	   ,created
+	   ,isOauth
+	   from 
+	  item left join  item_descr on item.numIid = item_descr.numIid  where isDelete = 0  and item_descr.descr is null;
+	</select>
+	
+	<select id="findByGmtCreated" parameterType="map" resultMap="resultItemPlayMap">
+	  select 
+	  <include refid="resultFileds"/>
+	  from 
+	  <include refid="table"/>
+	  order by gmtCreated 
+	  limit #{offset},#{limit}
+	</select>
+	
+	
+	<select id="findNeedCheckPriceItems" parameterType="map" resultMap="resultItemPlayMap">
+	  select 
+	  <include refid="resultFileds"/>
+	  from 
+	  <include refid="table"/>
+	  where needCheckPrice=2 
+	  order by nick 
+	  limit #{offset},#{limit}
+	</select>
+	
+	<select id="countNeedCheckPriceItems" resultType="long">
+	  select count(*) from 
+	  <include refid="table"/> 	  
+	  where needCheckPrice=2 
+	</select>
+	
+	<select id="getItemByOrders" parameterType="map" resultMap="resultItemRankMap">
+	   select i.title,i.tradePrice,i.price,i.picUrl,io.count,i.nick,i.numIid
+	   from  item i
+	   left join item_order_stat io
+	   on i.numIid=io.num_iid
+	   where i.nick=#{nick} and i.isDelete!=1
+	   order by i.created desc,io.count desc
+	   limit #{limit},#{offset}
+	</select>
+	
+	<select id="getItemByCollection" parameterType="map" resultMap="resultItemRankMap">
+	   select i.title,i.tradePrice,i.price,i.picUrl,ic.count,i.nick,i.numIid
+	   from  item i
+	   left join item_collect_stat ic
+	   on i.numIid=ic.num_iid
+	   where i.nick=#{nick} and i.isDelete!=1
+	   order by i.created desc,ic.count desc
+	   limit #{limit},#{offset}
+	</select>
+	
+	<select id="countForOrderRank" parameterType="map" resultType="long">
+	  select count(*) from
+	   item i
+	   left join item_order_stat io
+	   on i.numIid=io.num_iid
+	   where i.nick=#{nick} and i.isDelete!=1
+	</select>
+	
+	<select id="countForCollectRank" parameterType="map" resultType="long">
+	  select count(*) from
+	  item i
+	  left join item_collect_stat ic
+	  on i.numIid=ic.num_iid
+	  where i.nick=#{nick} and i.isDelete!=1
+	</select>
+	
+	<select id="findHot" parameterType="int" resultMap="resultItemPlayMap">
+	   select <include refid="resultFileds"/>,COUNT(DISTINCT nick) 
+	   from <include refid="table"/> where localApproveStatus=1 and isDelete!=1
+	   GROUP BY nick order by created limit #{limit}
+	</select>
+</mapper>

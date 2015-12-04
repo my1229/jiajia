@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunbei.dangkou.item.dao.mapper.interfaces.IItemPropsTmpDaoMapper">
+	<sql id="table">item_props_tmp</sql>
+
+	<sql id="fileds">
+		cid
+	   ,catName
+	   ,must
+	   ,propName
+	   ,name
+	   ,vid
+	   ,status
+	   ,pid
+	</sql>
+	
+	<resultMap type="ItemProps" id="resultItemPropsMap">
+	  <id property="id" column="id"/>
+	  <result property="cid" column="cid"/>
+	  <result property="catName" column="catName"/>
+	  <result property="must" column="must"/>
+	  <result property="propName" column="propName"/>
+	  <result property="name" column="name"/>
+	  <result property="vid" column="vid"/>
+	  <result property="status" column="status"/>
+	  <result property="pid" column="pid"/>
+	</resultMap>
+	
+	<insert id="insertBatch" parameterType="map">
+		insert into
+		<include refid="table" />
+		(
+		<include refid="fileds" />
+		)
+		values
+		<foreach collection="itemProps" item="itemProp" index="index"
+			separator=",">
+			(#{itemProp.cid},#{itemProp.catName},#{itemProp.must},#{itemProp.propName},#{itemProp.name},#{itemProp.vid},#{itemProp.status},#{itemProp.pid})
+		</foreach>
+	</insert>
+	
+	
+</mapper>

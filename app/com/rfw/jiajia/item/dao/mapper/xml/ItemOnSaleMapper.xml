@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunbei.dangkou.item.dao.mapper.interfaces.IItemOnSaleDaoMapper">
+	<sql id="table">item_onsale</sql>
+
+	<sql id="fields">
+	    numIid
+	   ,oldNumIid
+	   ,account
+	   ,publishTime
+	   ,source
+	   ,gmtCreated
+	</sql>
+	
+	<resultMap type="ItemOnSale" id="resultItemOnSaleMap">
+	  <id property="id" column="id"/>
+	  <result property="numIid" column="numIid"/>
+	  <result property="oldNumIid" column="oldNumIid"/>
+	  <result property="account" column="account"/>
+	  <result property="source" column="source"/>
+	  <result property="publishTime" column="publishTime"/>
+	</resultMap>
+	
+	<resultMap type="ItemOnSaleDto" id="resultItemOnSaleDtoMap">
+	  <result property="numIid" column="numIid"/>
+	  <result property="oldNumIid" column="oldNumIid"/>
+	  <result property="accountId" column="account"/>
+	  <result property="publishTime" column="publishTime"/>
+	  <result property="source" column="source"/>
+	  <result property="title" column="title"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="ItemOnSale" useGeneratedKeys="true" keyProperty="id">
+	 insert into
+	  <include refid="table" />
+	  (
+	  <include refid="fields" />
+	  )
+	  values
+		(#{numIid},#{oldNumIid},#{account},#{publishTime},#{source},now());
+	</insert>
+	
+	<select id="findByAccount" parameterType="map" resultMap="resultItemOnSaleMap">
+	  select 
+	  <include refid="fields"/>
+	  from 
+	  <include refid="table"/>
+	  where account=#{account} 
+	  order by publishTime desc
+	  limit #{offset},#{limit}
+	</select>
+	
+	<select id="findByAccountAndNumIid" parameterType="map" resultMap="resultItemOnSaleMap">
+	  select 
+	  <include refid="fields"/>
+	  from 
+	  <include refid="table"/>
+	  where account=#{accountId} and numIid=#{numIid} limit 1
+	</select>
+	
+	<select id="countByAccount" parameterType="String" resultType="long">
+	   select count(*) from
+	   <include refid="table"/>
+	   where account=#{account}
+	</select>
+	
+	<select id="checkByDay" parameterType="map" resultMap="resultItemOnSaleDtoMap">
+	   select io.numIid,io.oldNumIid,io.account,io.publishTIme,i.title
+	   from item_onsale io
+	   left join item i
+	   on io.numIid=i.numIid
+	   <where>
+	      <if test="start!=null">io.publishTime &gt;=#{start}</if>
+	     <if test="end!=null">and io.publishTime &lt;=#{end}</if>
+	   </where>
+	   order by publishTime desc
+	   limit #{offset},#{limit}
+	</select>
+	
+	<select id="count" parameterType="map" resultType="long">
+	   select count(*)
+	   from item_onsale
+	   <where>
+	     <if test="start!=null">publishTime &gt;=#{start}</if>
+	     <if test="end!=null">and publishTime &lt;=#{end}</if>
+	   </where>
+	</select>
+	
+	<select id="countAll" parameterType="map" resultType="long">
+	   select count(*)
+	   from item_onsale io 
+	   left join item i
+	   on io.numIid=i.numIid
+	   <where>
+	     <if test="start!=null">io.publishTime &gt;=#{start}</if>
+	     <if test="end!=null">and io.publishTime &lt;=#{end}</if>
+	     <if test="isOnSale!=null">and i.localApproveStatus =#{isOnSale}</if>
+	   </where>
+	</select> 
+	
+	
+	
+	<select id="countByUser" parameterType="String" resultType="long">
+      select count(*) from 
+      <include refid="table"/>
+      where account=#{accountId}
+	</select>
+	
+	<select id="countByUserAndItem" parameterType="String" resultType="long">
+	  select count(distinct numIid) from
+	  <include refid="table"/>
+	  where account=#{accountId}
+	</select>
+	
+	
+</mapper>
+

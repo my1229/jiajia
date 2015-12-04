@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunbei.dangkou.shopcart.dao.mapper.interfaces.IShopCartDaoMapper">
+	<sql id="table">shop_cart</sql>
+
+	<sql id="fileds">
+		id
+	   ,accountId
+	   ,gmtCreated
+	</sql>
+	
+	<resultMap type="ShopCart" id="resultShopCartMap">
+	  <id property="id" column="id"/>
+	  <result property="accountId" column="accountId"/>
+	</resultMap>
+	
+    <insert id="insert" parameterType="ShopCart" useGeneratedKeys="true" keyProperty="id">
+		insert into
+		<include refid="table" />
+		(
+		<include refid="fileds" />
+		)
+		values
+		(null,#{accountId},now());
+	</insert>
+	
+	
+	<select id="findByAccount" parameterType="String" resultMap="resultShopCartMap">
+	 select 
+	 <include refid="fileds"/>
+	 from 
+	 <include refid="table"/>
+	 where accountId=#{accountId}
+	</select>
+	
+</mapper>

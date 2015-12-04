@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunbei.dangkou.item.dao.mapper.interfaces.IItemSkuDaoMapper">
+	<sql id="table">item_sku</sql>
+
+	<sql id="fileds">
+		numIid
+	   ,skuId
+	   ,properties
+	   ,quantity
+	   ,price
+	   ,created
+	   ,modified
+	   ,propertiesName
+	   ,outerId
+	   ,barCode
+	   ,gmtCreated
+	</sql>
+	
+	<resultMap type="ItemSku" id="resultItemSkuMap">
+	  <id property="id" column="id"/>
+	  <result property="numIid" column="numIid"/>
+	  <result property="skuId" column="skuId"/>
+	  <result property="properties" column="properties"/>
+	  <result property="quantity" column="quantity"/>
+	  <result property="price" column="price"/>
+	  <result property="created" column="created"/>
+	  <result property="modified" column="modified"/>
+	  <result property="propertiesName" column="propertiesName"/>
+	  <result property="outerId" column="outerId"/>
+	  <result property="barCode" column="barCode"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="ItemSku" useGeneratedKeys="true" keyProperty="id">
+	 insert into
+	  <include refid="table" />
+	  (
+	  <include refid="fileds" />
+	  )
+	  values
+		(#{numIid},#{skuId},#{properties},#{quantity},#{price},#{created},#{modified},#{propertiesName},#{outerId},#{barCode},now());
+	</insert>
+	
+    <insert id="insertBatch" parameterType="map">
+		insert into
+		<include refid="table" />
+		(
+		<include refid="fileds" />
+		)
+		values
+		<foreach collection="itemSkus" item="itemSku" index="index"
+			separator=",">
+			(#{itemSku.numIid},#{itemSku.skuId},#{itemSku.properties},#{itemSku.quantity},#{itemSku.price},#{itemSku.created},#{itemSku.modified},#{itemSku.propertiesName},
+			 #{itemSku.outerId},#{itemSku.barCode},#{itemSku.gmtCreated})
+		</foreach>
+	</insert>
+	
+	<delete id="delete" parameterType="long">
+	  delete from 
+	  <include refid="table"/>
+	  where numIid=#{numIid}
+	</delete>
+	
+	<select id="findByNumIid" parameterType="long" resultMap="resultItemSkuMap">
+	  select
+	  <include refid="fileds"/>
+	  from
+	  <include refid="table"/>
+	  where numIid=#{numIid}
+	</select>
+</mapper>
