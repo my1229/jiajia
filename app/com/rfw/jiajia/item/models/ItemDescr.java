@@ -7,7 +7,6 @@
 package com.rfw.jiajia.item.models;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -15,50 +14,50 @@ import org.hibernate.annotations.Index;
 
 import com.rfw.common.base.models.BasicModel;
 
-@Entity(name = ItemDescr.TBALE_NAME)
+//@Entity(name = ItemDescr.TBALE_NAME)
 public class ItemDescr extends BasicModel {
 
-    public static final String TBALE_NAME = "item_descr";
+	public static final String TBALE_NAME = "item_descr";
 
-    @Id
-    @GeneratedValue
-    private Long id;
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    /**
-     * 宝贝Id
-     */
-    @Index(name = "_index_numIid")
-    @Column(unique = true)
-    private Long numIid;
+	/**
+	 * 宝贝Id
+	 */
+	@Index(name = "_index_numIid")
+	@Column(unique = true)
+	private Long numIid;
 
-    /**
-     * 宝贝描述
-     */
-    @Column(columnDefinition = "longtext")
-    private String descr;
+	/**
+	 * 宝贝描述
+	 */
+	@Column(columnDefinition = "longtext")
+	private String descr;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getNumIid() {
-        return numIid;
-    }
+	public Long getNumIid() {
+		return numIid;
+	}
 
-    public void setNumIid(Long numIid) {
-        this.numIid = numIid;
-    }
+	public void setNumIid(Long numIid) {
+		this.numIid = numIid;
+	}
 
-    public String getDescr() {
-        return descr;
-    }
+	public String getDescr() {
+		return descr;
+	}
 
-    public void setDescr(String descr) {
-        this.descr = descr;
-    }
+	public void setDescr(String descr) {
+		this.descr = descr;
+	}
 
 }

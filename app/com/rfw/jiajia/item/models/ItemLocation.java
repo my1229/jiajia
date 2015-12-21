@@ -7,7 +7,6 @@
 package com.rfw.jiajia.item.models;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -15,62 +14,62 @@ import org.hibernate.annotations.Index;
 
 import com.rfw.common.base.models.BasicModel;
 
-@Entity(name = ItemLocation.TABLE_NAME)
+//@Entity(name = ItemLocation.TABLE_NAME)
 public class ItemLocation extends BasicModel {
 
-    public static final String TABLE_NAME = "item_location";
+	public static final String TABLE_NAME = "item_location";
 
-    @Id
-    @GeneratedValue
-    private Long id;
+	@Id
+	@GeneratedValue
+	private Long id;
 
-    /**
-     * 宝贝Id
-     */
-    @Index(name = "_index_numIid")
-    @Column(unique = true)
-    private Long numIid;
+	/**
+	 * 宝贝Id
+	 */
+	@Index(name = "_index_numIid")
+	@Column(unique = true)
+	private Long numIid;
 
-    /**
-     * 城市
-     */
-    private String city;
+	/**
+	 * 城市
+	 */
+	private String city;
 
-    /**
-     * 省份
-     */
-    private String state;
+	/**
+	 * 省份
+	 */
+	private String state;
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Long getNumIid() {
-        return numIid;
-    }
+	public Long getNumIid() {
+		return numIid;
+	}
 
-    public void setNumIid(Long numIid) {
-        this.numIid = numIid;
-    }
+	public void setNumIid(Long numIid) {
+		this.numIid = numIid;
+	}
 
-    public String getCity() {
-        return city;
-    }
+	public String getCity() {
+		return city;
+	}
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-    public String getState() {
-        return state;
-    }
+	public String getState() {
+		return state;
+	}
 
-    public void setState(String state) {
-        this.state = state;
-    }
+	public void setState(String state) {
+		this.state = state;
+	}
 
 }
