@@ -42,11 +42,11 @@ img {
 }
 .ck-slide .ck-prev {
 	left: 5px;
-	background: url(../images/arrow-left.png) #000 50% no-repeat;
+	background: url(../../../public/images/arrow-left.png) #000 50% no-repeat;
 }
 .ck-slide .ck-next {
 	right: 5px;
-	background: url(../images/arrow-right.png) #000 50% no-repeat;
+	background: url(../../../public/images/arrow-right.png) #000 50% no-repeat;
 }
 .ck-slidebox {
 	position: absolute;

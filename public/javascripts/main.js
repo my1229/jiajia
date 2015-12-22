@@ -2,14 +2,14 @@
 
 $(document).ready(function() {
 	see_big2();
-	$("a[rel^='prettyPhoto']").prettyPhoto({
-		deeplinking : false,
-		counter_separator_label : ' of ',
-		gallery_markup : '',
-		social_tools : '',
-		slideshow : false,
-		opacity : 0.29
-	});
+//	$("a[rel^='prettyPhoto']").prettyPhoto({
+//		deeplinking : false,
+//		counter_separator_label : ' of ',
+//		gallery_markup : '',
+//		social_tools : '',
+//		slideshow : false,
+//		opacity : 0.29
+//	});
 	$('.shadow_img>div').each(function(){
 		var img = $(this).find('img').attr('src');
 			$(this).css({'background-image': 'url('+img+')'});
