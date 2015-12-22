@@ -1,243 +1,242 @@
-#{extends 'jjmain.html' /} #{set title:'index' /}
-<ul class="main-tab-nav">
+#{extends 'jjmain.html' /} #{set title:'index' /} #{set 'moreStyles'} #{/set}
+<link rel="stylesheet" type="text/css" href="../../public/stylesheets/style.css">
+<link href="../../../public/stylesheets/slide.css" rel="stylesheet" type="text/css">
+<!--<ul class="main-tab-nav">
 	<li class="active">#{get 'title' /}</li>
-</ul>
+</ul>-->
 <div id="content">
-    	<div class="inner">
-
-				<!-- css -->
-				<link rel="stylesheet" href="css/slide.css">
-				<style>
-				.ck-slide { width: 920px; height: 302px; margin: 0 auto;}
-				.ck-slide ul.ck-slide-wrapper { height: 302px;}
-				</style>
-				<div class="ck-slide">
-					<ul class="ck-slide-wrapper">
-						<li>
-										<a href="javascript:"><img src="../../../public/images/slider_img1.jpg" alt=""></a>
-						</li>
-						<!-- <li style="display:none">
-							<a href="javascript:"><img src="images/slider_img2.jpg alt=""></a>
-						</li> -->
-						<li style="display:none">
-							<a href="javascript:"><img src="../../../public/images/slider_img2.jpg" alt=""></a>
-						</li>
-						<li style="display:none">
-							<a href="javascript:"><img src="../../../public/images/slider_img3.jpg" alt=""></a>
-						</li>
-						<li style="display:none">
-							<a href="javascript:"><img src="../../../public/images/slider_img4.jpg" alt=""></a>
-						</li>
-						<li style="display:none">
-							<a href="javascript:"><img src="../../../public/images/slider_img5.jpg" alt=""></a>
-						</li>
-						<li style="display:none">
-							<a href="javascript:"><img src="../../../public/images/slider_img6.jpg" alt=""></a>
-						</li>
-					</ul>
-					<a href="javascript:;" class="ctrl-slide ck-prev">上一张</a> <a href="javascript:;" class="ctrl-slide ck-next">下一张</a>
-					<div class="ck-slidebox">
-						<div class="slideWrap">
-							<ul class="dot-wrap">
-								<li class="current"><em>1</em></li>
-								<li><em>2</em></li>
-								<li><em>3</em></li>
-								<li><em>4</em></li>
-								<li><em>5</em></li>
-								<li><em>6</em></li>
-							</ul>
-						</div>
+	<div class="clearfix">
+			<!-- css -->
+			<link rel="stylesheet" href="../../../public/stylesheets/slide.css">
+			<style>
+			.ck-slide { width: 920px; height: 302px; margin: 0 auto;}
+			.ck-slide ul.ck-slide-wrapper { height: 302px;}
+			</style>
+			<div class="ck-slide">
+				<ul class="ck-slide-wrapper">
+					<li>
+						<a href="javascript:"><img src="../../../public/images/slider_img1.jpg" alt=""></a>
+					</li>
+					<!-- <li style="display:none">
+						<a href="javascript:"><img src="images/slider_img2.jpg alt=""></a>
+					</li> -->
+					<li style="display:none">
+						<a href="javascript:"><img src="../../../public/images/slider_img2.jpg" alt=""></a>
+					</li>
+					<li style="display:none">
+						<a href="javascript:"><img src="../../../public/images/slider_img3.jpg" alt=""></a>
+					</li>
+					<li style="display:none">
+						<a href="javascript:"><img src="../../../public/images/slider_img4.jpg" alt=""></a>
+					</li>
+					<li style="display:none">
+						<a href="javascript:"><img src="../../../public/images/slider_img5.jpg" alt=""></a>
+					</li>
+					<li style="display:none">
+						<a href="javascript:"><img src="../../../public/images/slider_img6.jpg" alt=""></a>
+					</li>
+				</ul>
+				<a href="javascript:;" class="ctrl-slide ck-prev">上一张</a> <a href="javascript:;" class="ctrl-slide ck-next">下一张</a>
+				<div class="ck-slidebox">
+					<div class="slideWrap">
+						<ul class="dot-wrap">
+							<li class="current"><em>1</em></li>
+							<li><em>2</em></li>
+							<li><em>3</em></li>
+							<li><em>4</em></li>
+							<li><em>5</em></li>
+							<li><em>6</em></li>
+						</ul>
 					</div>
 				</div>
+			</div>
 
-	    	<!-- <div id="my_slider">
-                <p style="text-align:center"><img src="./ElephantWeb_files/茶叶展示.jpg" alt="茶叶展示" title="茶叶展示"></a>
-            </div> -->
-            <div class="line"></div>
-            <div class="block_slogan">
-            	<p>昔尝顾渚茗，凿得金沙泉。旧游怀莫置，幽事复依然。</p>
-                <p>绿染龙波上，香搴谷雨前。况于山寺里，藉此可谈禅。</p>
-            </div>
-            <div class="line"></div>
-            <div class="block_about">
-            	<div class="col_1">
-                	<h2>关于龙井</h2>
-                    <div class="image">
-                    </div>
-                    <div class="text">
-	                    <p>龙井茶是汉族传统名茶，中国十大名茶之一，龙井茶色泽翠绿，香气浓郁，甘醇爽口，形如雀舌，即有“色绿、香郁、味甘、形美”四绝的特点，龙井茶因其产地不同，分为西湖龙井、大佛龙井、钱塘龙井、越州龙井四种。</p>
-	                    <p>&nbsp;</p>
-	                    <p>龙井茶根据采摘时间的不同，分为：在清明前采制的叫“明前茶”，谷雨前采制的叫“雨前茶”。向有“雨前是上品，明前是珍品”的说法，以及“早采一天是宝，晚采一天是草”的说法.</p>
-                        <div class="clear"></div>
-                        <a href="http://baike.baidu.com/view/3712772.htm" class="button">
-                            点击查看更多
-                        </a>
-                    </div>
+    	<!-- <div id="my_slider">
+            <p style="text-align:center"><img src="./ElephantWeb_files/茶叶展示.jpg" alt="茶叶展示" title="茶叶展示"></a>
+        </div> -->
+        <div class="line"></div>
+        <div class="block_slogan">
+        	<p>昔尝顾渚茗，凿得金沙泉。旧游怀莫置，幽事复依然。</p>
+            <p>绿染龙波上，香搴谷雨前。况于山寺里，藉此可谈禅。</p>
+        </div>
+        <div class="line"></div>
+        <div class="block_about">
+        	<div class="col_1">
+            	<h2>关于龙井</h2>
+                <div class="image">
                 </div>
-                <div class="col_2">
-                	<h2>我们的服务</h2>
-                    <div class="column_l">
-                    	<div class="image icon_develop">
-                        </div>
-                    	<div class="text">
-                    		<h5><a href="http://elephantweb.webglogic.com/index.html#">货到付款</a></h5>
-                            <p>支持货到再付款，线上不提供支付功能.</p>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="image icon_program">
-                        </div>
-                    	<div class="text">
-                    		<h5><a href="http://elephantweb.webglogic.com/index.html#">送货上门</a></h5>
-                            <p>直接送货到公司座位，拒绝包装损坏.</p>
-                        </div>
-                    </div>
-                    <div class="column_r">
-                    	<div class="image icon_photo">
-                        </div>
-                    	<div class="text">
-                    		<h5><a href="http://elephantweb.webglogic.com/index.html#">免费品尝</a></h5>
-                            <p>公司内有同事提供各档样品，好不好，喝过才知道.</p>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="image icon_comments">
-                        </div>
-                    	<div class="text">
-                    		<h5><a href="http://elephantweb.webglogic.com/index.html#">品质保证</a></h5>
-                            <p>100%保证收到货物品和样品一样，品质如一.</p>
-                        </div>
-                    </div>
+                <div class="text">
+                    <p>龙井茶是汉族传统名茶，中国十大名茶之一，龙井茶色泽翠绿，香气浓郁，甘醇爽口，形如雀舌，即有“色绿、香郁、味甘、形美”四绝的特点，龙井茶因其产地不同，分为西湖龙井、大佛龙井、钱塘龙井、越州龙井四种。</p>
+                    <p>&nbsp;</p>
+                    <p>龙井茶根据采摘时间的不同，分为：在清明前采制的叫“明前茶”，谷雨前采制的叫“雨前茶”。向有“雨前是上品，明前是珍品”的说法，以及“早采一天是宝，晚采一天是草”的说法.</p>
+                    <div class="clear"></div>
+                    <a href="http://baike.baidu.com/view/3712772.htm" class="button">
+                        点击查看更多
+                    </a>
                 </div>
             </div>
-            <div class="line"></div>
-            <div class="block_resent">
-                <h2>茶叶分档</h2>
-                <div class="images">
-	                <div class="img_box shadow_img see_big">
-	                	<div style=" background-image : url(./images/茶叶分档.jpg);">
-                        	<div class="description">
-                            	<p class="alt">Description of the image 1</p>
-                                <p class="title"><a href="http://elephantweb.webglogic.com/index.html#">Title porfolio 1</a></p>
-                            </div>
-                            <div class="link_big"><a href="http://elephantweb.webglogic.com/images/big_img14.jpg" rel="prettyPhoto[gallery1]"></a></div>
-	                    	<img src="./ElephantWeb_files/img_home_min1.jpg" title="" alt="">
-	                    </div>
-						<br/>
-						<p style="text-align:center">明前特级</p>
-
-	                </div>
-
-	                <div class="img_box shadow_img see_big">
-	                	<div style="background-image: url(./images/茶叶分档.jpg);">
-	                    	<div class="description">
-                            	<p class="alt">Description of the image 2</p>
-                                <p class="title"><a href="http://elephantweb.webglogic.com/index.html#">Title porfolio 2</a></p>
-                            </div>
-                            <div class="link_big"><a href="http://elephantweb.webglogic.com/images/big_img9.jpg" rel="prettyPhoto[gallery1]"></a></div>
-	                    	<img src="./ElephantWeb_files/img_home_min2.jpg" title="" alt="">
-	                    </div>
-						<br/>
-						<p style="text-align:center">明前一级</p>
-	                </div>
-	                <div class="img_box shadow_img see_big">
-	                	<div style="background-image: url(./images/茶叶分档.jpg);">
-	                    	<div class="description">
-                            	<p class="alt">Description of the image 3</p>
-                                <p class="title"><a href="http://elephantweb.webglogic.com/index.html#">Title porfolio 3</a></p>
-                            </div>
-                            <div class="link_big"><a href="http://elephantweb.webglogic.com/images/big_img12.jpg" rel="prettyPhoto[gallery1]"></a></div>
-	                    	<img src="./ElephantWeb_files/img_home_min3.jpg" title="" alt="">
-	                    </div>
-						<br/>
-						<p style="text-align:center">礼盒搭档</p>
-	                </div>
-	                <div class="img_box shadow_img see_big">
-	                	<div style="background-image: url(./images/茶叶分档.jpg);">
-	                    	<div class="description">
-                            	<p class="alt">Description of the image 4</p>
-                                <p class="title"><a href="http://elephantweb.webglogic.com/index.html#">Title porfolio 4</a></p>
-                            </div>
-                            <div class="link_big"><a href="http://elephantweb.webglogic.com/images/big_img13.jpg" rel="prettyPhoto[gallery1]"></a></div>
-	                    	<img src="./ElephantWeb_files/img_home_min4.jpg" title="" alt="">
-	                    </div>
-						<br/>
-						<p style="text-align:center">超值组合</p>
-	                </div>
+            <div class="col_2">
+            	<h2>我们的服务</h2>
+                <div class="column_l">
+                	<div class="image icon_develop">
+                    </div>
+                	<div class="text">
+                		<h5><a href="http://elephantweb.webglogic.com/index.html#">货到付款</a></h5>
+                        <p>支持货到再付款，线上不提供支付功能.</p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="image icon_program">
+                    </div>
+                	<div class="text">
+                		<h5><a href="http://elephantweb.webglogic.com/index.html#">送货上门</a></h5>
+                        <p>直接送货到公司座位，拒绝包装损坏.</p>
+                    </div>
+                </div>
+                <div class="column_r">
+                	<div class="image icon_photo">
+                    </div>
+                	<div class="text">
+                		<h5><a href="http://elephantweb.webglogic.com/index.html#">免费品尝</a></h5>
+                        <p>公司内有同事提供各档样品，好不好，喝过才知道.</p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="image icon_comments">
+                    </div>
+                	<div class="text">
+                		<h5><a href="http://elephantweb.webglogic.com/index.html#">品质保证</a></h5>
+                        <p>100%保证收到货物品和样品一样，品质如一.</p>
+                    </div>
                 </div>
             </div>
-            <div class="line"></div>
+        </div>
+        <div class="line"></div>
+        <div class="block_resent">
+            <h2>茶叶分档</h2>
+            <div class="images">
+                <div class="img_box shadow_img see_big">
+                	<div style=" background-image : url(../../../public/images/tea_level.jpg);">
+                    	<div class="description">
+                        	<p class="alt">600</p>
+                            <!--<p class="title"><a href=""></a></p>-->
+                        </div>
+                        <div class="link_big"><a href="http://elephantweb.webglogic.com/images/big_img14.jpg" rel="prettyPhoto[gallery1]"></a></div>
+                    	<img src="../../../public/images/tea_level.jpg" title="" alt="">
+                    </div>
+					<br/>
+					<p style="text-align:center">明前特级</p>
 
-            <div class="block_other">
-                <div class="block_blog">
-                    <h4>LATEST FROM THE BLOG</h4>
-                    <div class="post">
-	                    <div class="img"><a href="http://elephantweb.webglogic.com/index.html#"><img src="./ElephantWeb_files/img_blog1.jpg" alt="" title=""></a></div>
-	                    <div class="text">
-		                    <p><a href="http://elephantweb.webglogic.com/index.html#">There are many variation of passages of Lorem.</a></p>
-		                    <p class="date">September 15, 2011</p>
-	                    </div>
+                </div>
+
+                <div class="img_box shadow_img see_big">
+                	<div style="background-image: url(../../../public/images/tea_level.jpg);">
+                    	<div class="description">
+                        	<p class="alt">450</p>
+                            <!--<p class="title"><a href="">Title porfolio 2</a></p>-->
+                        </div>
+                        <div class="link_big"><a href="http://elephantweb.webglogic.com/images/big_img9.jpg" rel="prettyPhoto[gallery1]"></a></div>
+                    	<img src="../../../public/images/tea_level.jpg" title="" alt="">
                     </div>
-                    <div class="line2"></div>
-                    <div class="post">
-	                    <div class="img"><a href="http://elephantweb.webglogic.com/index.html#"><img src="./ElephantWeb_files/img_blog2.jpg" alt="" title=""></a></div>
-	                    <div class="text">
-		                    <p><a href="http://elephantweb.webglogic.com/index.html#">Variations of passages of  available.</a></p>
-		                    <p class="date">September 12, 2011</p>
-	                    </div>
+					<br/>
+					<p style="text-align:center">明前一级</p>
+                </div>
+                <div class="img_box shadow_img see_big">
+                	<div style="background-image: url(../../../public/images/tea_level.jpg);">
+                    	<div class="description">
+                        	<p class="alt">600+10</p>
+                            <!--<p class="title"><a href="">Title porfolio 3</a></p>-->
+                        </div>
+                        <div class="link_big"><a href="http://elephantweb.webglogic.com/images/big_img12.jpg" rel="prettyPhoto[gallery1]"></a></div>
+                    	<img src="../../../public/images/tea_level.jpg" title="" alt="">
+                    </div>
+					<br/>
+					<p style="text-align:center">礼盒搭档</p>
+                </div>
+                <div class="img_box shadow_img see_big">
+                	<div style="background-image: url(../../../public/images/tea_level.jpg);">
+                    	<div class="description">
+                        	<p class="alt">600+350</p>
+                            <!--<p class="title"><a href="">Title porfolio 4</a></p>-->
+                        </div>
+                        <div class="link_big"><a href="http://elephantweb.webglogic.com/images/big_img13.jpg" rel="prettyPhoto[gallery1]"></a></div>
+                    	<img src="../../../public/images/tea_level.jpg" title="" alt="">
+                    </div>
+					<br/>
+					<p style="text-align:center">超值组合</p>
+                </div>
+            </div>
+        </div>
+        <div class="line"></div>
+
+        <div class="block_other">
+            <div class="block_blog">
+                <h4>LATEST FROM THE BLOG</h4>
+                <div class="post">
+                    <div class="img"><a href="http://elephantweb.webglogic.com/index.html#"><img src="./ElephantWeb_files/img_blog1.jpg" alt="" title=""></a></div>
+                    <div class="text">
+	                    <p><a href="http://elephantweb.webglogic.com/index.html#">There are many variation of passages of Lorem.</a></p>
+	                    <p class="date">September 15, 2011</p>
                     </div>
                 </div>
-                <div class="block_twitter">
-                    <h4>Twitter Widget</h4>
+                <div class="line2"></div>
+                <div class="post">
+                    <div class="img"><a href="http://elephantweb.webglogic.com/index.html#"><img src="./ElephantWeb_files/img_blog2.jpg" alt="" title=""></a></div>
                     <div class="text">
-                    	<p>Sanfrancisco2010: Prefer freelancer that has experience are <a href="http://elephantweb.webglogic.com/index.html#">http://bit.ly/rIZgm6</a></p>
-                        <p class="date">14 minutes ago</p>
-					</div>
-                    <div class="line2"></div>
-                    <div class="text">
-                    	<p>Download Editable &amp; Password Free MTA NYC Subway Map <a href="http://elephantweb.webglogic.com/index.html#">http://goo.gl/vTGVF</a></p>
-                        <p class="date">26 minutes ago</p>
-					</div>
+	                    <p><a href="http://elephantweb.webglogic.com/index.html#">Variations of passages of  available.</a></p>
+	                    <p class="date">September 12, 2011</p>
+                    </div>
                 </div>
-                <div class="block_portfolio">
-                    <h4>Portfolio category</h4>
-                    <a href="http://elephantweb.webglogic.com/index.html#">Web Design</a>
-                    <div class="line2"></div>
-					<a href="http://elephantweb.webglogic.com/index.html#">Photography</a>
-                    <div class="line2"></div>
-					<a href="http://elephantweb.webglogic.com/index.html#">Icons</a>
-                    <div class="line2"></div>
-					<a href="http://elephantweb.webglogic.com/index.html#">Illustration</a>
-                    <div class="line2"></div>
-					<a href="http://elephantweb.webglogic.com/index.html#">Branding Design</a>
-                    <div class="line2"></div>
-                </div>
-                <div class="block_contact">
-                    <h4>Contact form</h4>
-                    <form action="">
-                    	<div class="input_box">
-                        	<input type="text" name="" title="Name" class="s_inp_text" style="display: none;">
-                        <span>Name</span></div>
-                        <div class="input_box">
-                        	<input type="text" name="" title="You e-mail" class="s_inp_text" style="display: none;">
-                        <span>You e-mail</span></div>
-                        <div class="textarea_box">
-                        	<textarea name="" cols="30" rows="10" title="Message" class="s_inp_text" style="display: none;"></textarea>
-                        <span>Message</span></div>
-                        <a href="http://elephantweb.webglogic.com/index.html#" class="button">
-                            <span class="left">
-                                <span class="right">
-                                    Send
-                                </span>
+            </div>
+            <div class="block_twitter">
+                <h4>Twitter Widget</h4>
+                <div class="text">
+                	<p>Sanfrancisco2010: Prefer freelancer that has experience are <a href="http://elephantweb.webglogic.com/index.html#">http://bit.ly/rIZgm6</a></p>
+                    <p class="date">14 minutes ago</p>
+				</div>
+                <div class="line2"></div>
+                <div class="text">
+                	<p>Download Editable &amp; Password Free MTA NYC Subway Map <a href="http://elephantweb.webglogic.com/index.html#">http://goo.gl/vTGVF</a></p>
+                    <p class="date">26 minutes ago</p>
+				</div>
+            </div>
+            <div class="block_portfolio">
+                <h4>Portfolio category</h4>
+                <a href="http://elephantweb.webglogic.com/index.html#">Web Design</a>
+                <div class="line2"></div>
+				<a href="http://elephantweb.webglogic.com/index.html#">Photography</a>
+                <div class="line2"></div>
+				<a href="http://elephantweb.webglogic.com/index.html#">Icons</a>
+                <div class="line2"></div>
+				<a href="http://elephantweb.webglogic.com/index.html#">Illustration</a>
+                <div class="line2"></div>
+				<a href="http://elephantweb.webglogic.com/index.html#">Branding Design</a>
+                <div class="line2"></div>
+            </div>
+            <div class="block_contact">
+                <h4>Contact form</h4>
+                <form action="">
+                	<div class="input_box">
+                    	<input type="text" name="" title="Name" class="s_inp_text" style="display: none;">
+                    <span>Name</span></div>
+                    <div class="input_box">
+                    	<input type="text" name="" title="You e-mail" class="s_inp_text" style="display: none;">
+                    <span>You e-mail</span></div>
+                    <div class="textarea_box">
+                    	<textarea name="" cols="30" rows="10" title="Message" class="s_inp_text" style="display: none;"></textarea>
+                    <span>Message</span></div>
+                    <a href="http://elephantweb.webglogic.com/index.html#" class="button">
+                        <span class="left">
+                            <span class="right">
+                                Send
                             </span>
-                        </a>
-                    </form>
-                </div>
+                        </span>
+                    </a>
+                </form>
             </div>
-		</div>
-    </div>
-	
-</div>
+        </div>
+	</div>
+</div>	
 
-<s<!--cript src="js/jquery-1.8.3.min.js"></script>-->
+<!--<script src="js/jquery-1.8.3.min.js"></script>-->
 <script src="../../../public/javascript/slide.js"></script>
 	<script>
 	$('.ck-slide').ckSlide({

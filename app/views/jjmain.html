@@ -21,6 +21,7 @@
 		<script type="text/javascript" src="../../public/javascripts/jquery.inputstext.js"></script>
 		<script type="text/javascript" src="../../public/javascripts/jquery.easing.js"></script>
 		<script type="text/javascript" src="../../public/javascripts/setting_themes.js"></script>
+		#{get 'moreStyles' /}
 	</head>
 	<body>
 		<div id="header">
@@ -44,7 +45,7 @@
 	
 	                <div id="menu">
 	                	<ul>
-		                	<li><a href="./html/home.html" class="active">&nbsp&nbsp主页<span>homepage</span></a></li>
+		                	<li><a href="http://115.29.47.18/" class="active">&nbsp&nbsp主页<span>homepage</span></a></li>
 		                	<li><a href="">关于我们<span>our team</span></a></li>
 		                	<li><a href="">我的订单<span>my order</span></a>
 	                        	<ul>
@@ -66,7 +67,11 @@
 	        </div>
 		</div>
 		
-		<div id="footer">
+		<div id="main-content" class="clearfix">
+			#{doLayout /}
+		</div>
+		
+	<div id="footer">
     	<div class="inner">
     		<div class="line"></div>
             <div class="block_footer">
